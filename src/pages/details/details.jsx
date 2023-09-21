@@ -13,8 +13,10 @@ import {
   PageContent,
   PageHeader,
   Title,
+  BackButton,
+  ActionButton,
 } from "../../common/shared";
-import { MovieDetails, Description, BookButton, BackButton } from "./styles";
+import { MovieDetails, Description } from "./styles";
 import {
   DIRECTOR_LABEL,
   TICKET_COST_LABEL,
@@ -80,9 +82,9 @@ function Details() {
         </MovieDetails>
 
         <ShowTimings timings={timings} onSlotClicked={onSlotClicked} />
-        <BookButton onClick={onBookClicked} disabled={!selectedTime}>
+        <ActionButton onClick={onBookClicked} disabled={!selectedTime}>
           {BOOK_BUTTON}
-        </BookButton>
+        </ActionButton>
       </PageContent>
     </PageContainer>
   );

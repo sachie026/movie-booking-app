@@ -69,6 +69,24 @@ export const Title = styled.div`
   font-size: ${SIZES.xxl};
 `;
 
+export const BackButton = styled.div`
+  margin-bottom: ${SIZES.xxl};
+  color: ${COLORS.blue};
+  font-weight: 600;
+  cursor: pointer;
+`;
+
+export const ActionButton = styled.button`
+  padding: ${SIZES.sm} ${SIZES.lg};
+  border-radius: ${SIZES.xs};
+  border: 0;
+  background: ${COLORS.red};
+  color: ${COLORS.white};
+  font-size: ${SIZES.lg};
+  cursor: pointer;
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+`;
+
 // Movie interface
 export const movieType = {
   handleMovieClick: PropTypes.func,

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { COLORS, SIZES } from "../../common/shared";
+import { ActionButton, COLORS, SIZES } from "../../common/shared";
 
 export const MovieDetails = styled.div`
   display: flex;
@@ -46,24 +46,6 @@ export const Slot = styled.div`
   color: ${(props) => (props.selected ? COLORS.white : COLORS.darkGray)};
 `;
 
-export const BookButton = styled.button`
-  padding: ${SIZES.sm} ${SIZES.lg};
-  border-radius: ${SIZES.xs};
-  border: 0;
-  background: ${COLORS.red};
-  color: ${COLORS.white};
-  font-size: ${SIZES.lg};
-  cursor: pointer;
-  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
-`;
-
 export const TimingsLabel = styled.label`
   font-weight: 600;
-`;
-
-export const BackButton = styled.div`
-  margin-bottom: ${SIZES.xxl};
-  color: ${COLORS.blue};
-  font-weight: 600;
-  cursor: pointer;
 `;

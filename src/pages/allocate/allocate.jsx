@@ -1,17 +1,41 @@
 import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useDispatch } from "react-redux";
 
 import useData from "../../hooks/useMovieData";
 import useSeatsData from "../../hooks/useSeatsData";
-import { selectSeats } from "../../actions";
+import { selectSeats, removeSeat } from "../../actions";
+import {
+  PageContainer,
+  PageContent,
+  PageHeader,
+  Title,
+  BackButton,
+} from "../../common/shared";
+import {
+  SELECT_SEATS_LABEL,
+  GO_BACK_TO_DETAILS,
+  PAY_LABEL,
+  CURRENCY_LABEL,
+} from "../../common/labels";
+import SeatsByRows from "./seats-by-rows";
+import { AllocateContainer, AllocateTitle, CheckoutButton } from "./styles";
 
 function Checkout() {
-  const { selectedTime, ticketCost, selectedSeats } = useData();
+  const {
+    selectedTime,
+    ticketCost,
+    selectedSeats,
+    selectedMovieId,
+    getMovieDetails,
+  } = useData();
   const { seatsData } = useSeatsData(selectedTime);
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const details = getMovieDetails(parseInt(selectedMovieId));
+
+  const { name } = details;
 
   const seatsByRows = Object.entries(seatsData);
 
@@ -19,41 +43,49 @@ function Checkout() {
     dispatch(selectSeats({ selectedSeats: seatName }));
   };
 
+  const onRemoveSeatClicked = (seatName) => {
+    dispatch(removeSeat(seatName));
+  };
+
+  const goBack = () => {
+    dispatch(selectSeats({ selectedSeats: null }));
+    navigate(`/details/${params.movieId}`);
+  };
+
   useEffect(() => {
     if (!selectedTime) {
-      dispatch(selectSeats({ selectedSeats: null }));
-      navigate(`/details/${params.movieId}`);
+      goBack();
     }
   }, []);
 
   return (
-    <div>
-      Allocate
-      {seatsByRows.map(([rowName, rowData], index) => {
-        return (
-          <div key={`row${index}`}>
-            {rowName}
-            {rowData.map((isAvialable, seatIndex) => {
-              return (
-                <div
-                  key={`seat${seatIndex}`}
-                  onClick={() =>
-                    isAvialable && onSeatClicked(`${rowName}${seatIndex}`)
-                  }
-                >
-                  {isAvialable ? "avialable" : "booked"}
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
-      Ticket cost :{" "}
-      <div>
-        {selectedSeats}
-        {ticketCost * (selectedSeats?.length || 0)}
-      </div>
-    </div>
+    <PageContainer>
+      <PageHeader>
+        <Title>{name}</Title>
+      </PageHeader>
+
+      <PageContent>
+        <AllocateContainer>
+          <BackButton onClick={goBack}>{GO_BACK_TO_DETAILS}</BackButton>
+          <AllocateTitle>{SELECT_SEATS_LABEL}</AllocateTitle>
+          {seatsByRows.map(([_rowName, rowData], index) => {
+            return (
+              <SeatsByRows
+                index={index}
+                onSeatClicked={onSeatClicked}
+                onRemoveSeatClicked={onRemoveSeatClicked}
+                rowData={rowData}
+              />
+            );
+          })}
+          <CheckoutButton disabled={!selectedSeats?.length}>
+            {`${PAY_LABEL} ${CURRENCY_LABEL}. ${
+              ticketCost * (selectedSeats?.length || 0)
+            }`}
+          </CheckoutButton>
+        </AllocateContainer>
+      </PageContent>
+    </PageContainer>
   );
 }
 

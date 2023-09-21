@@ -16,7 +16,20 @@ function appReducer(state = initialState, action) {
     case "SELECT_SEATS":
       return {
         ...state,
-        selectedSeats: [...state.selectedSeats, action.payload.selectedSeats],
+        selectedSeats: action.payload.selectedSeats
+          ? [...state.selectedSeats, action.payload.selectedSeats]
+          : [],
+      };
+    case "REMOVE_SEAT":
+      const previouslySeats = [...state.selectedSeats];
+      const index = state.selectedSeats.findIndex(
+        (seat) => seat === action.payload
+      );
+      previouslySeats.splice(index, 1);
+
+      return {
+        ...state,
+        selectedSeats: [...previouslySeats],
       };
     case "SELECT_MOVIE_TIMING":
       return {

@@ -1,4 +1,5 @@
 import React from "react";
+import { PropTypes } from "prop-types";
 
 import { DetailsRow, DetailsLabel } from "./styles";
 
@@ -11,5 +12,10 @@ function DataRow(props) {
     </DetailsRow>
   );
 }
+
+DataRow.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
 export default DataRow;
