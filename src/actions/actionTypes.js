@@ -1,0 +1,3 @@
+export const GET_MOVIES = "GET_MOVIES";
+export const SELECT_MOVIE_TIMING = "SELECT_MOVIE_TIMING";
+export const SELECT_SEATS = "SELECT_SEATS";
