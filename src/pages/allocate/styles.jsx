@@ -50,8 +50,9 @@ export const CheckoutButton = styled(ActionButton)`
 export const SelectedTime = styled.div`
   margin-top: ${SIZES.lg};
   border-radius: ${SIZES.xxs};
-  color: ${COLORS.black};
+  color: ${COLORS.green};
   background: ${COLORS.lightGray};
   padding: ${SIZES.xs} ${SIZES.sm};
   font-size: ${SIZES.sm};
+  font-weight: 600;
 `;
