@@ -46,3 +46,12 @@ export const AllocateTitle = styled.div`
 export const CheckoutButton = styled(ActionButton)`
   margin-top: ${SIZES.xxxl};
 `;
+
+export const SelectedTime = styled.div`
+  margin-top: ${SIZES.lg};
+  border-radius: ${SIZES.xxs};
+  color: ${COLORS.black};
+  background: ${COLORS.lightGray};
+  padding: ${SIZES.xs} ${SIZES.sm};
+  font-size: ${SIZES.sm};
+`;

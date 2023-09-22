@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 
-import DataRow from "./data-row";
+import DataRow from "../../components/data-row";
 import ShowTimings from "./show-timings";
 
 import useData from "../../hooks/useMovieData";

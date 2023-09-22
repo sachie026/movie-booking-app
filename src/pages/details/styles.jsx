@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ActionButton, COLORS, SIZES } from "../../common/shared";
+import { COLORS, SIZES } from "../../common/shared";
 
 export const MovieDetails = styled.div`
   display: flex;
@@ -14,16 +14,6 @@ export const Description = styled.div`
   font-weight: 600;
   font-size: ${SIZES.lg};
   margin-bottom: ${SIZES.xl};
-`;
-
-export const DetailsRow = styled.div`
-  display: flex;
-  margin-bottom: ${SIZES.xs};
-`;
-
-export const DetailsLabel = styled.div`
-  font-weight: 600;
-  margin-right: ${SIZES.md};
 `;
 
 export const TimingsDetails = styled.div`

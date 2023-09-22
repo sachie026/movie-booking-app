@@ -44,10 +44,12 @@ export const PageContainer = styled.div`
 export const PageHeader = styled.div`
   height: 20%;
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: center;
   align-items: center;
   background: ${COLORS.darkGray};
+  color: ${COLORS.white};
 `;
 
 export const PageContent = styled.div`
@@ -59,8 +61,6 @@ export const PageContent = styled.div`
 `;
 
 export const Title = styled.div`
-  color: ${COLORS.white};
-  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;

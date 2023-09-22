@@ -6,7 +6,13 @@ import store from "./store";
 import Home from "./pages/home";
 import Details from "./pages/details";
 import Allocate from "./pages/allocate";
-import { ALLOCATE_PATH, DETAILS_PATH, HOME_PATH } from "./common/labels";
+import {
+  ALLOCATE_PATH,
+  CHECKOUT_PATH,
+  DETAILS_PATH,
+  HOME_PATH,
+} from "./common/labels";
+import Checkout from "./pages/checkout";
 
 function App() {
   return (
@@ -16,6 +22,7 @@ function App() {
           <Route path={HOME_PATH} element={<Home />} />
           <Route path={DETAILS_PATH} element={<Details />} />
           <Route path={ALLOCATE_PATH} element={<Allocate />} />
+          <Route path={CHECKOUT_PATH} element={<Checkout />} />
         </Routes>
       </BrowserRouter>
     </Provider>

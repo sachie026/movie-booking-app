@@ -1,3 +1,3 @@
-import Allocate from "./allocate";
+import Checkout from "./checkout";
 
-export default Allocate;
+export default Checkout;
