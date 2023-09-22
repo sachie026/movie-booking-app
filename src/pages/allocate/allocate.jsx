@@ -24,6 +24,7 @@ import {
 } from "./styles";
 import { formatAMPM } from "../../common/utils";
 import useAllocate from "./useAllocate";
+import SeatCellInfo from "./seatCellInfo";
 
 function Allocate() {
   const {
@@ -68,6 +69,8 @@ function Allocate() {
               );
             })
           )}
+
+          <SeatCellInfo />
 
           <CheckoutButton
             onClick={onCheckoutClick}

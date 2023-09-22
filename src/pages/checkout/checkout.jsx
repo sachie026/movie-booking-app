@@ -8,7 +8,6 @@ import {
   PageContainer,
   PageContent,
   PageHeader,
-  TIMER,
   Title,
 } from "../../common/shared";
 import { BackButtonContainer, CheckoutContainer } from "./styles";

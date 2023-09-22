@@ -3,7 +3,7 @@ export const HOME_TITLE = "Recommended movies";
 export const DIRECTOR_LABEL = "Director:";
 export const TICKET_COST_LABEL = "Ticket cost: ";
 export const BOOK_BUTTON = "Book ticket";
-export const SHOW_TIMING_LABEL = "Show timings:";
+export const SHOW_TIMING_LABEL = "Show timings for today:";
 export const CURRENCY_LABEL = "rs";
 export const GO_BACK_TO_LIST = "Go back to movies";
 export const GO_BACK_TO_DETAILS = "Go back to movie details";
@@ -18,6 +18,9 @@ export const MOVIE_LABEL = "Movie: ";
 export const SELECTED_SEATS_LABEL = "Selected seats: ";
 export const CHECKOUT_LABEL = "Checkout";
 export const PROCEED_LABEL = "Proceed";
+export const SEAT_INFO_AVAILABLE = "Available seats";
+export const SEAT_INFO_SELECTED = "Selected seats";
+export const SEAT_INFO_BOOKED = "Booked seats";
 
 // Navigation
 export const HOME_PATH = "/";

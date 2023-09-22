@@ -8,6 +8,9 @@ export const MovieDetails = styled.div`
   padding: ${SIZES.xxl} ${SIZES.xl};
   width: 50%;
   box-sizing: border-box;
+  @media (max-width: 968px) {
+    width: 75%;
+  }
 `;
 
 export const Description = styled.div`

@@ -10,6 +10,10 @@ export const CheckoutContainer = styled.div`
   background: ${COLORS.white};
   margin-bottom: ${SIZES.xxl};
   border-radius: ${SIZES.xs};
+
+  @media (max-width: 1024px) {
+    width: 75%;
+  }
 `;
 
 export const BackButtonContainer = styled.div`

@@ -11,6 +11,7 @@ function useCheckout() {
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const {
     selectedTime,
     getMovieDetails,

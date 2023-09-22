@@ -20,6 +20,10 @@ export const MoviesListView = styled.div`
   padding: ${SIZES.xxl} ${SIZES.xl};
   width: 50%;
   box-sizing: border-box;
+
+  @media (max-width: 968px) {
+    width: 75%;
+  }
 `;
 
 export const MovieRowView = styled.div`

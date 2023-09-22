@@ -7,6 +7,10 @@ export const AllocateContainer = styled.div`
   padding: ${SIZES.xxl} ${SIZES.xl};
   width: 50%;
   box-sizing: border-box;
+
+  @media (max-width: 1024px) {
+    width: 75%;
+  }
 `;
 
 export const SeatsRow = styled.div`
@@ -56,4 +60,13 @@ export const SelectedTime = styled.div`
   padding: ${SIZES.xs} ${SIZES.sm};
   font-size: ${SIZES.sm};
   font-weight: 600;
+`;
+
+export const SeatInfo = styled.div`
+  display: flex;
+  margin-top: ${SIZES.xxxl};
+`;
+
+export const Space = styled.div`
+  margin-right: ${SIZES.lg};
 `;
