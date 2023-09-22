@@ -31,7 +31,7 @@ function ShowTimings(props) {
 }
 
 ShowTimings.propTypes = {
-  timings: PropTypes.arrayOf(PropTypes.string).isRequired,
+  timings: PropTypes.arrayOf(PropTypes.string),
   onSlotClicked: PropTypes.func,
 };
 

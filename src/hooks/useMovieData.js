@@ -25,6 +25,7 @@ function useData() {
         setLoadingMovies(false);
       }
     } catch (e) {
+      setLoadingMovies(false);
       console.log("error while fetching movie data", e);
     }
   };

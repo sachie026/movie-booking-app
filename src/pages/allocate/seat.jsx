@@ -8,12 +8,12 @@ function Seat(props) {
     onSeatClicked,
     seatIndex,
     rowIndex,
-    isSelected,
+    isSeatSelected,
     onRemoveSeatClicked,
   } = props;
 
   const handleSeatClick = () => {
-    if (isSelected) {
+    if (isSeatSelected) {
       onRemoveSeatClicked(`row${rowIndex}${seatIndex}`);
     } else {
       onSeatClicked(`row${rowIndex}${seatIndex}`);
@@ -21,7 +21,7 @@ function Seat(props) {
   };
 
   return isAvailable ? (
-    <SeatCell isSelected={isSelected} onClick={handleSeatClick}>
+    <SeatCell $isSeatSelected={isSeatSelected} onClick={handleSeatClick}>
       {seatIndex}
     </SeatCell>
   ) : (
@@ -35,7 +35,7 @@ Seat.propTypes = {
   onRemoveSeatClicked: PropTypes.func.isRequired,
   rowIndex: PropTypes.number.isRequired,
   seatIndex: PropTypes.number.isRequired,
-  isSelected: PropTypes.bool.isRequired,
+  isSeatSelected: PropTypes.bool.isRequired,
 };
 
-export default Seat;
+export default React.memo(Seat);

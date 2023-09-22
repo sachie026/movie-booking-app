@@ -18,12 +18,13 @@ export const SeatsRow = styled.div`
 `;
 
 export const SeatCell = styled.div`
-  background: ${(props) => (props.isSelected ? COLORS.green : COLORS.white)};
+  background: ${(props) =>
+    props.$isSeatSelected ? COLORS.green : COLORS.white};
   padding: ${SIZES.xs} ${SIZES.sm};
   margin-right: ${SIZES.md};
   border-radius: ${SIZES.xxs};
   cursor: pointer;
-  color: ${(props) => (props.isSelected ? COLORS.white : COLORS.darkGray)};
+  color: ${(props) => (props.$isSeatSelected ? COLORS.white : COLORS.darkGray)};
 `;
 
 export const BookedSeatCell = styled(SeatCell)`

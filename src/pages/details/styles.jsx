@@ -17,8 +17,8 @@ export const Description = styled.div`
 `;
 
 export const TimingsDetails = styled.div`
-  padding: ${SIZES.xxl} ${SIZES.xl};
-  width: 50%;
+  padding: ${SIZES.xxl} 0px;
+  width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
@@ -38,4 +38,5 @@ export const Slot = styled.div`
 
 export const TimingsLabel = styled.label`
   font-weight: 600;
+  margin-top: ${SIZES.xxxl};
 `;

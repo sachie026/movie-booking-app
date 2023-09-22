@@ -4,14 +4,16 @@ import { fetchSeats } from "../common/data";
 
 function useSeatsData(selectedTime) {
   const [seatsData, setSeatsData] = useState([]);
+  const [loadingSeats, setLoadingSeats] = useState(false);
 
   const getSeats = async () => {
     try {
-      console.log("fetch getSeats");
+      setLoadingSeats(true);
       const seats = await fetchSeats();
       setSeatsData({ ...seats });
+      setLoadingSeats(false);
     } catch (e) {
-      return {};
+      setLoadingSeats(false);
     }
   };
 
@@ -23,6 +25,7 @@ function useSeatsData(selectedTime) {
 
   return {
     seatsData: seatsData,
+    loadingSeats: loadingSeats,
   };
 }
 

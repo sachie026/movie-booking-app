@@ -16,6 +16,8 @@ export const PAY_LABEL = "Pay ";
 export const SELECTED_TIME_LABEL = "Selected time: ";
 export const MOVIE_LABEL = "Movie: ";
 export const SELECTED_SEATS_LABEL = "Selected seats: ";
+export const CHECKOUT_LABEL = "Checkout";
+export const PROCEED_LABEL = "Proceed";
 
 // Navigation
 export const HOME_PATH = "/";

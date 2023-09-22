@@ -15,7 +15,7 @@ function DataRow(props) {
 
 DataRow.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default DataRow;

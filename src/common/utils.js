@@ -9,3 +9,15 @@ export function formatAMPM(dateString) {
   var strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
+
+export function getDetailsPagePath(movieId) {
+  return `/details/${movieId}`;
+}
+
+export function getAllocatePagePath(movieId) {
+  return `/details/${movieId}/allocate`;
+}
+
+export function getCheckoutPagePath() {
+  return `checkout`;
+}

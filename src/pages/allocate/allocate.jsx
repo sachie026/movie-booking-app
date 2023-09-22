@@ -1,10 +1,7 @@
-import React, { useEffect, useMemo } from "react";
-import { useNavigate, useParams } from "react-router";
-import { useDispatch } from "react-redux";
+import React from "react";
 
-import useData from "../../hooks/useMovieData";
-import useSeatsData from "../../hooks/useSeatsData";
-import { selectSeats, removeSeat } from "../../actions";
+import SeatsByRows from "./seats-by-rows";
+import Loader from "../../components/loader";
 
 import {
   PageContainer,
@@ -16,12 +13,8 @@ import {
 import {
   SELECT_SEATS_LABEL,
   GO_BACK_TO_DETAILS,
-  PAY_LABEL,
-  CURRENCY_LABEL,
   SELECTED_TIME_LABEL,
-  CHECKOUT_PATH,
 } from "../../common/labels";
-import SeatsByRows from "./seats-by-rows";
 
 import {
   AllocateContainer,
@@ -30,53 +23,21 @@ import {
   SelectedTime,
 } from "./styles";
 import { formatAMPM } from "../../common/utils";
+import useAllocate from "./useAllocate";
 
-function Checkout() {
+function Allocate() {
   const {
+    name,
     selectedTime,
-    ticketCost,
     selectedSeats,
-    selectedMovieId,
-    getMovieDetails,
-  } = useData();
-  const { seatsData } = useSeatsData(selectedTime);
-  const params = useParams();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const details = getMovieDetails(parseInt(selectedMovieId));
-
-  const { name } = details;
-
-  const seatsByRows = Object.entries(seatsData);
-
-  const checkoutLabel = useMemo(() => {
-    return `${PAY_LABEL} ${CURRENCY_LABEL}. ${
-      ticketCost * (selectedSeats?.length || 0)
-    }`;
-  }, [selectedSeats?.length, ticketCost]);
-
-  const onSeatClicked = (seatName) => {
-    dispatch(selectSeats({ selectedSeats: seatName }));
-  };
-
-  const onRemoveSeatClicked = (seatName) => {
-    dispatch(removeSeat(seatName));
-  };
-
-  const goBack = () => {
-    dispatch(selectSeats({ selectedSeats: null }));
-    navigate(`/details/${params.movieId}`);
-  };
-
-  const onCheckoutClick = () => {
-    navigate(`checkout`);
-  };
-
-  useEffect(() => {
-    if (!selectedTime) {
-      goBack();
-    }
-  }, []);
+    loadingSeats,
+    seatsByRows,
+    checkoutLabel,
+    onSeatClicked,
+    onRemoveSeatClicked,
+    onCheckoutClick,
+    goBack,
+  } = useAllocate();
 
   return (
     <PageContainer>
@@ -92,16 +53,21 @@ function Checkout() {
           <BackButton onClick={goBack}>{GO_BACK_TO_DETAILS}</BackButton>
           <AllocateTitle>{SELECT_SEATS_LABEL}</AllocateTitle>
 
-          {seatsByRows.map(([_rowName, rowData], index) => {
-            return (
-              <SeatsByRows
-                index={index}
-                onSeatClicked={onSeatClicked}
-                onRemoveSeatClicked={onRemoveSeatClicked}
-                rowData={rowData}
-              />
-            );
-          })}
+          {loadingSeats ? (
+            <Loader />
+          ) : (
+            seatsByRows.map(([_rowName, rowData], index) => {
+              return (
+                <SeatsByRows
+                  key={`row${index}`}
+                  index={index}
+                  onSeatClicked={onSeatClicked}
+                  onRemoveSeatClicked={onRemoveSeatClicked}
+                  rowData={rowData}
+                />
+              );
+            })
+          )}
 
           <CheckoutButton
             onClick={onCheckoutClick}
@@ -115,4 +81,4 @@ function Checkout() {
   );
 }
 
-export default Checkout;
+export default Allocate;

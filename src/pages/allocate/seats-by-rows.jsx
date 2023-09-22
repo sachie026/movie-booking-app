@@ -14,8 +14,6 @@ function SeatsByRows(props) {
     return `${ROW_LABEL} ${index + 1}`;
   }, [index]);
 
-  console.log("selectedSeats", selectedSeats);
-
   return (
     <>
       <SeatsRow>
@@ -30,7 +28,9 @@ function SeatsByRows(props) {
               isAvailable={isAvailable}
               seatIndex={seatIndex}
               rowIndex={index}
-              isSelected={selectedSeats.includes(`row${index}${seatIndex}`)}
+              isSeatSelected={selectedSeats?.includes(
+                `row${index}${seatIndex}`
+              )}
             />
           );
         })}

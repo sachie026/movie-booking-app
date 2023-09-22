@@ -1,12 +1,7 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
 
 import DataRow from "../../components/data-row";
 import ShowTimings from "./show-timings";
-
-import useData from "../../hooks/useMovieData";
-import { selectMovieTiming } from "../../actions";
 
 import {
   PageContainer,
@@ -21,46 +16,23 @@ import {
   DIRECTOR_LABEL,
   TICKET_COST_LABEL,
   BOOK_BUTTON,
-  ALLOCATE_LABEL,
-  HOME_PATH,
   CURRENCY_LABEL,
   GO_BACK_TO_LIST,
 } from "../../common/labels";
+import useDetails from "./useDetails";
 
 function Details() {
-  const params = useParams();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { getMovieDetails, selectedTime } = useData();
-  const details = getMovieDetails(parseInt(params.movieId));
-
-  const { name, description, director, timings, cost } = details;
-
-  const onSlotClicked = (slot) => {
-    const data = {
-      selectedMovieId: params.movieId,
-      selectedTime: slot,
-      ticketCost: cost,
-    };
-    dispatch(selectMovieTiming(data));
-  };
-
-  const onBookClicked = () => {
-    if (selectedTime) {
-      navigate(ALLOCATE_LABEL);
-    }
-  };
-
-  const onGoBackClicked = () => {
-    // reset data before moving back
-    const data = {
-      selectedMovieId: null,
-      selectedTime: null,
-      ticketCost: null,
-    };
-    dispatch(selectMovieTiming(data));
-    navigate(HOME_PATH);
-  };
+  const {
+    name,
+    description,
+    director,
+    timings,
+    cost,
+    selectedTime,
+    onSlotClicked,
+    onBookClicked,
+    onGoBackClicked,
+  } = useDetails();
 
   return (
     <PageContainer>
@@ -79,12 +51,12 @@ function Details() {
               value={`${cost}${CURRENCY_LABEL}`}
             />
           )}
-        </MovieDetails>
 
-        <ShowTimings timings={timings} onSlotClicked={onSlotClicked} />
-        <ActionButton onClick={onBookClicked} disabled={!selectedTime}>
-          {BOOK_BUTTON}
-        </ActionButton>
+          <ShowTimings timings={timings} onSlotClicked={onSlotClicked} />
+          <ActionButton onClick={onBookClicked} disabled={!selectedTime}>
+            {BOOK_BUTTON}
+          </ActionButton>
+        </MovieDetails>
       </PageContent>
     </PageContainer>
   );
