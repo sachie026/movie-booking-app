@@ -11,6 +11,5 @@ export const fetchSeats = async () => {
   const data = await fetch(SEATS_URL);
   const seats = await data.json();
 
-  console.log("seats", seats);
   return seats;
 };

@@ -14,6 +14,7 @@ function useSeatsData(selectedTime) {
       setLoadingSeats(false);
     } catch (e) {
       setLoadingSeats(false);
+      console.log("error while fetching seats data", e);
     }
   };
 
