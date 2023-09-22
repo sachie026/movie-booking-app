@@ -74,7 +74,7 @@ function Allocate() {
 
           <CheckoutButton
             onClick={onCheckoutClick}
-            disabled={!selectedSeats?.length}
+            disabled={!selectedSeats?.length || loadingSeats}
           >
             {checkoutLabel}
           </CheckoutButton>

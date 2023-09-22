@@ -22,9 +22,10 @@ import {
 } from "../../common/labels";
 
 import useCheckout from "./useCheckout";
+import Timer from "./timer";
 
 function Checkout() {
-  const { name, selectedSeats, selectedTime, totalCost, goBack } =
+  const { name, selectedSeats, selectedTime, totalCost, goBack, redirectBack } =
     useCheckout();
 
   return (
@@ -46,6 +47,8 @@ function Checkout() {
           />
           <DataRow label={TICKET_COST_LABEL} value={totalCost} />
         </CheckoutContainer>
+
+        <Timer onTimerEnd={redirectBack} />
 
         <ActionButton> {PROCEED_LABEL} </ActionButton>
       </PageContent>

@@ -21,6 +21,8 @@ export const PROCEED_LABEL = "Proceed";
 export const SEAT_INFO_AVAILABLE = "Available seats";
 export const SEAT_INFO_SELECTED = "Selected seats";
 export const SEAT_INFO_BOOKED = "Booked seats";
+export const TIMEOUT_MESSAGE = "Page expires in ";
+export const SECONDS = "seconds";
 
 // Navigation
 export const HOME_PATH = "/";

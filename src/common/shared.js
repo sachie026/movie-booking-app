@@ -1,7 +1,9 @@
 import { PropTypes } from "prop-types";
 import styled from "styled-components";
 
-export const TIMER = 3000;
+export const TIMOUT_VALUE = 10000;
+export const INTERVAL_VALUE = 1000;
+export const TIMER_START_COUNTER = 10;
 
 // API urls
 export const MOVIES_URL =

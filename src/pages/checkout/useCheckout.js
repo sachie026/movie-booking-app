@@ -47,6 +47,7 @@ function useCheckout() {
     selectedSeats: selectedSeats,
     totalCost: totalCost,
     goBack: goBack,
+    redirectBack: redirectBack,
   };
 }
 
